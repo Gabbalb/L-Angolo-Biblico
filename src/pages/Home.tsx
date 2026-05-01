@@ -70,7 +70,6 @@ export default function Home() {
             </Reveal>
             <Reveal>
               <div className="space-y-6">
-                <p className="text-xl md:text-2xl font-serif italic opacity-60">"Un Libro per te"</p>
                 <p className="text-lg md:text-xl opacity-70 leading-relaxed max-w-md">
                   Vogliamo regalarti un libro, ce ne sono di vari temi, tutti con fondamento biblico. Scegli il tuo.
                 </p>
