@@ -15,7 +15,7 @@ export const googleSheetService = {
           trama: 'Spunti di riflessione che trasformeranno la tua vita.',
           pagine: 87,
           categoria: 'Adulti',
-          immagine: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400'
+          immagine: '/copertine/5_domande_cruciali.jpeg'
         },
         {
           id: '2',
@@ -24,16 +24,16 @@ export const googleSheetService = {
           trama: 'Un analisi scientifica e biblica sulle origini.',
           pagine: 34,
           categoria: 'Adulti',
-          immagine: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400'
+          immagine: '/copertine/15_ragioni.jpeg'
         },
         {
           id: '3',
-          titolo: 'Gesù mi ama',
-          autore: 'L. Bianchi',
-          trama: 'Storie bibliche per i più piccoli.',
-          pagine: 24,
-          categoria: 'Bambini',
-          immagine: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&q=80&w=400'
+          titolo: 'NELL\'OMBRA DELL\'ONNIPOTENTE',
+          autore: 'Elisabeth Elliot',
+          trama: 'La biografia di Jim Elliot, un uomo che ha dato tutto per il Vangelo.',
+          pagine: 297,
+          categoria: 'Adulti',
+          immagine: '/copertine/nell_ombra_dell_onnipotente.jpeg'
         }
       ];
     }
