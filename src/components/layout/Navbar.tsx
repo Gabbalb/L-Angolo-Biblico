@@ -19,7 +19,7 @@ export const Navbar = () => {
       <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b border-black/5 px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center transition-opacity hover:opacity-70">
           <img 
-            src="/images/logo.webp" 
+            src="/logo.webp" 
             alt="L'Angolo Biblico Logo" 
             className="h-10 md:h-12 w-auto object-contain"
           />
