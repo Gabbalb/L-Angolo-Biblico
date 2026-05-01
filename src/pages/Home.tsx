@@ -22,7 +22,7 @@ export default function Home() {
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           className="text-center relative z-10"
         >
-          <span className="text-[10px] uppercase tracking-[0.6em] mb-12 block opacity-60">L'Associazione</span>
+          <span className="text-[10px] uppercase tracking-[0.6em] mb-12 block opacity-60"></span>
           <h1 className="text-7xl md:text-[10rem] font-serif mb-12 italic leading-none tracking-tighter text-balance">
             L'Angolo<br />Biblico
           </h1>
@@ -45,7 +45,7 @@ export default function Home() {
       </section>
 
       {/* 2. SECTION: UN LIBRO PER TE */}
-      <section className="py-48 px-6 bg-white">
+      <section className="pt-[30px] pb-[100px] px-6 bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-24 items-center">
           <Reveal>
             <div className="aspect-[3/4] bg-[#F5F5F5] flex items-center justify-center p-12 overflow-hidden group">
@@ -66,13 +66,13 @@ export default function Home() {
           
           <div className="space-y-12">
             <Reveal>
-              <h2 className="text-5xl md:text-7xl italic leading-[1.1] tracking-tight">Il soffio<br />delle parole</h2>
+              <h2 className="text-5xl md:text-7xl italic leading-[1.1] tracking-tight">Un Libro<br />per te</h2>
             </Reveal>
             <Reveal>
               <div className="space-y-6">
                 <p className="text-xl md:text-2xl font-serif italic opacity-60">"Un Libro per te"</p>
                 <p className="text-lg md:text-xl opacity-70 leading-relaxed max-w-md">
-                  Una raccolta curata con amore, pensata per offrire spunti di riflessione e calore durante il cammino.
+                  Vogliamo regalarti un libro, ce ne sono di vari temi, tutti con fondamento biblico. Scegli il tuo.
                 </p>
               </div>
             </Reveal>
@@ -109,8 +109,7 @@ export default function Home() {
           </Reveal>
           <Reveal>
             <p className="text-xl md:text-3xl max-w-3xl mx-auto opacity-70 leading-relaxed font-serif italic">
-              «La vecchiaia è un porto di quiete, non di stanchezza.»<br />
-              Siamo qui per condividere ogni istante.
+              L'Angolo Biblico porta sollievo, gioia e riflessione agli anziani delle Case riposo. Scopri le nostre attività.
             </p>
           </Reveal>
           
@@ -123,7 +122,7 @@ export default function Home() {
                 Attività
               </Link>
               <p className="text-[10px] mt-8 opacity-40 uppercase tracking-[0.3em] italic">
-                Scopri i nostri incontri settimanali
+                Scopri le nostre attività.
               </p>
             </div>
           </Reveal>

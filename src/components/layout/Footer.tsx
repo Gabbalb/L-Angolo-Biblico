@@ -1,7 +1,7 @@
 import { Reveal } from '../ui/Reveal';
 
 export const Footer = () => {
-  const fiscalCode = "12345678901";
+  const fiscalCode = "03205040987";
 
   return (
     <footer className="py-48 px-6 bg-[#001D3D] text-[#97CCEA]">
@@ -31,8 +31,8 @@ export const Footer = () => {
 
            <Reveal>
              <p className="text-[9px] uppercase tracking-[0.3em] opacity-30 mt-24">
-               © 2026 L'Angolo Biblico Associazione<br />
-               La semplicità del dono.
+              L'Angolo Biblico<br />
+               Non è religione.
              </p>
            </Reveal>
         </div>
