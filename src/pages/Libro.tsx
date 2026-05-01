@@ -8,6 +8,7 @@ import { ShoppingCart, X, Plus, Minus, Check, ChevronRight } from 'lucide-react'
 export default function Libro() {
   const [books, setBooks] = useState<Book[]>([]);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [qtyToOrder, setQtyToOrder] = useState(1);
   const [cart, setCart] = useState<CartItem[]>(() => {
     const saved = localStorage.getItem('libri-cart');
     return saved ? JSON.parse(saved) : [];
@@ -153,7 +154,10 @@ export default function Libro() {
                     <motion.div
                       layoutId={`book-${book.id}`}
                       key={book.id}
-                      onClick={() => setSelectedBook(book)}
+                      onClick={() => {
+                        setSelectedBook(book);
+                        setQtyToOrder(1);
+                      }}
                       className="cursor-pointer group flex flex-col items-center text-center"
                     >
                       <div className="aspect-[3/4] w-full bg-white shadow-2xl rounded-xl overflow-hidden mb-6 relative transition-transform duration-500 group-hover:-translate-y-2">
@@ -215,7 +219,15 @@ export default function Libro() {
               <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
                 <span className="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-4 block">{selectedBook.categoria}</span>
                 <h2 className="text-4xl font-serif italic mb-2">{selectedBook.titolo}</h2>
-                <p className="text-sm uppercase tracking-widest opacity-40 mb-8">{selectedBook.autore}</p>
+                <div className="flex items-center gap-4 mb-8">
+                  <p className="text-sm uppercase tracking-widest opacity-40">{selectedBook.autore}</p>
+                  {selectedBook.pagine && (
+                    <>
+                      <div className="w-[1px] h-3 bg-black/10" />
+                      <p className="text-sm font-serif italic text-[#8B4513] opacity-60">{selectedBook.pagine} pagine</p>
+                    </>
+                  )}
+                </div>
                 
                 <div className="mb-12">
                   <h4 className="text-xs uppercase tracking-widest font-semibold mb-4 opacity-80">La Trama</h4>
@@ -225,8 +237,27 @@ export default function Libro() {
                 </div>
 
                 <div className="flex flex-col gap-6">
+                  <div className="flex items-center gap-6">
+                    <span className="text-xs uppercase tracking-widest font-semibold opacity-60">Quantità</span>
+                    <div className="flex items-center border border-black/10 rounded-full px-4 py-2">
+                      <button 
+                        onClick={() => setQtyToOrder(Math.max(1, qtyToOrder - 1))}
+                        className="p-1 hover:opacity-50 transition-opacity"
+                      >
+                        <Minus className="w-4 h-4" />
+                      </button>
+                      <span className="w-12 text-center font-serif text-lg">{qtyToOrder}</span>
+                      <button 
+                        onClick={() => setQtyToOrder(qtyToOrder + 1)}
+                        className="p-1 hover:opacity-50 transition-opacity"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+
                   <button 
-                    onClick={() => addToCart(selectedBook, 1)}
+                    onClick={() => addToCart(selectedBook, qtyToOrder)}
                     className="w-full bg-black text-white py-4 text-xs uppercase tracking-widest hover:bg-black/80 transition-colors"
                   >
                     Richiedi Gratuitamente

@@ -21,6 +21,9 @@ function doGet(e) {
   return JSON_RESPONSE(books);
 }
 
+// Struttura colonne consigliata per il foglio "Libri":
+// ID, Titolo, Autore, Trama, Pagine, Categoria, Immagine
+
 function doPost(e) {
   try {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
