@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Libro from './pages/Libro';
 import TerzaEta from './pages/TerzaEta';
 import Contatti from './pages/Contatti';
+import Dashboard from './pages/Dashboard';
 
 // Componente per forzare lo scroll in alto al cambio pagina
 function ScrollToTop() {
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="/un-libro-per-te" element={<Libro />} />
             <Route path="/terza-eta" element={<TerzaEta />} />
             <Route path="/contatti" element={<Contatti />} />
+            <Route path="/dashboard-gestione" element={<Dashboard />} />
           </Routes>
         </main>
 
