@@ -16,7 +16,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b border-black/5 px-6 py-4 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b border-black/5 pl-[23px] pr-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center transition-opacity hover:opacity-70">
           <img 
             src="/logo.jpg" 
@@ -24,6 +24,12 @@ export const Navbar = () => {
             className="h-10 md:h-12 w-auto object-contain"
           />
         </Link>
+        
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] pl-[0.4em] opacity-40 font-serif italic whitespace-nowrap">
+            non è religione
+          </span>
+        </div>
 
         <button 
           onClick={toggleMenu}

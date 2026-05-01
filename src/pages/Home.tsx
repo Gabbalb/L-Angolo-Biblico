@@ -48,14 +48,14 @@ export default function Home() {
       <section className="pt-[30px] pb-[100px] px-6 bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-24 items-center">
           <Reveal>
-            <div className="aspect-[3/4] bg-[#F5F5F5] flex items-center justify-center p-12 overflow-hidden group">
+            <div className="aspect-[3/4] bg-[#F5F5F5] overflow-hidden group">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.8 }}
-                className="text-center"
+                className="w-full h-full"
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=600" 
+                  src="/fiorino.jpeg" 
                   alt="Libro antico"
                   className="w-full h-full object-cover mix-blend-multiply opacity-80"
                   referrerPolicy="no-referrer"
