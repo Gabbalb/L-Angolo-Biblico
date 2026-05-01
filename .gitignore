@@ -8,9 +8,3 @@ coverage/
 !.env.example
 
 # Manually uploaded assets in public
-public/*.jpg
-public/*.jpeg
-public/*.png
-public/*.webp
-public/*.svg
-public/*.ico
