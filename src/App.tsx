@@ -23,22 +23,31 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="bg-white text-black min-h-screen flex flex-col font-sans">
-        <Navbar />
-        
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/un-libro-per-te" element={<Libro />} />
-            <Route path="/terza-eta" element={<TerzaEta />} />
-            <Route path="/contatti" element={<Contatti />} />
-            <Route path="/dashboard-gestione" element={<Dashboard />} />
-          </Routes>
-        </main>
-
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isLibroPage = location.pathname === '/un-libro-per-te';
+
+  return (
+    <div className="bg-white text-black min-h-screen flex flex-col font-sans">
+      <Navbar />
+      
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/un-libro-per-te" element={<Libro />} />
+          <Route path="/terza-eta" element={<TerzaEta />} />
+          <Route path="/contatti" element={<Contatti />} />
+          <Route path="/dashboard-gestione" element={<Dashboard />} />
+        </Routes>
+      </main>
+
+      {!isLibroPage && <Footer />}
+    </div>
   );
 }
 

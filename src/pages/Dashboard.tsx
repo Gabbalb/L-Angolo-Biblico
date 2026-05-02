@@ -109,14 +109,15 @@ export default function Dashboard() {
                     <th className="px-6 py-4 font-semibold">Titolo</th>
                     <th className="px-6 py-4 font-semibold">Autore</th>
                     <th className="px-6 py-4 font-semibold">Categoria</th>
+                    <th className="px-6 py-4 font-semibold">Stato</th>
                     <th className="px-6 py-4 font-semibold">Azioni</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-black/5">
                   {books.map(book => (
-                    <tr key={book.id} className="text-sm">
+                    <tr key={book.id} className={`text-sm ${book.esaurito ? 'opacity-50' : ''}`}>
                       <td className="px-6 py-4">
-                        <img src={book.immagine} className="w-10 h-12 object-cover" />
+                        <img src={book.immagine} className={`w-10 h-12 ${book.categoria === 'Lingua Straniera' ? 'object-contain' : 'object-cover'}`} />
                       </td>
                       <td className="px-6 py-4 font-serif text-base">{book.titolo}</td>
                       <td className="px-6 py-4 opacity-60">{book.autore}</td>
@@ -124,6 +125,17 @@ export default function Dashboard() {
                         <span className="text-[10px] uppercase tracking-widest bg-[#F8F9FA] px-2 py-1 rounded border border-black/5">
                           {book.categoria}
                         </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        {book.esaurito ? (
+                          <span className="text-[10px] uppercase tracking-widest text-red-600 font-bold border border-red-100 bg-red-50 px-2 py-1 rounded">
+                            Esaurito
+                          </span>
+                        ) : (
+                          <span className="text-[10px] uppercase tracking-widest text-green-600 font-bold border border-green-100 bg-green-50 px-2 py-1 rounded">
+                            Disponibile
+                          </span>
+                        )}
                       </td>
                       <td className="px-6 py-4">
                         <button className="text-[10px] uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Modifica</button>
