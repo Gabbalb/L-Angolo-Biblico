@@ -23,7 +23,7 @@ export default function Home() {
           className="text-center relative z-10"
         >
           <span className="text-[10px] uppercase tracking-[0.6em] mb-12 block opacity-60"></span>
-          <h1 className="text-7xl md:text-[10rem] font-serif mb-12 italic leading-none tracking-tighter text-balance">
+          <h1 className="text-7xl md:text-[10rem] font-serif mb-12 leading-none tracking-tighter text-balance">
             L'Angolo<br />Biblico
           </h1>
           <p className="text-xl md:text-2xl max-w-xl mx-auto font-serif italic text-balance leading-relaxed">
@@ -66,7 +66,7 @@ export default function Home() {
           
           <div className="space-y-12">
             <Reveal>
-              <h2 className="text-5xl md:text-7xl italic leading-[1.1] tracking-tight">Un Libro<br />per te</h2>
+              <h2 className="text-5xl md:text-7xl leading-[1.1] tracking-tight">Un Libro<br />per te</h2>
             </Reveal>
             <Reveal>
               <div className="space-y-6">
@@ -84,7 +84,7 @@ export default function Home() {
                   <span className="relative z-10 text-xl uppercase tracking-[0.3em] font-bold">Esplora</span>
                   <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                 </Link>
-                <p className="text-[10px] mt-6 opacity-40 uppercase tracking-[0.2em] italic">
+                <p className="text-[10px] mt-6 opacity-40 uppercase tracking-[0.2em]">
                   Tocca l'area per visualizzare i testi disponibili
                 </p>
               </div>
@@ -104,10 +104,10 @@ export default function Home() {
             <span className="text-xs uppercase tracking-[0.5em] opacity-50 block">Comunità</span>
           </Reveal>
           <Reveal>
-            <h2 className="text-6xl md:text-9xl italic leading-none">Terza Età</h2>
+            <h2 className="text-6xl md:text-9xl leading-none">Terza Età</h2>
           </Reveal>
           <Reveal>
-            <p className="text-xl md:text-3xl max-w-3xl mx-auto opacity-70 leading-relaxed font-serif italic">
+            <p className="text-xl md:text-3xl max-w-3xl mx-auto opacity-70 leading-relaxed font-serif">
               L'Angolo Biblico porta sollievo, gioia e riflessione agli anziani delle Case riposo. Scopri le nostre attività.
             </p>
           </Reveal>
@@ -120,7 +120,7 @@ export default function Home() {
               >
                 Attività
               </Link>
-              <p className="text-[10px] mt-8 opacity-40 uppercase tracking-[0.3em] italic">
+              <p className="text-[10px] mt-8 opacity-40 uppercase tracking-[0.3em]">
                 Scopri le nostre attività.
               </p>
             </div>

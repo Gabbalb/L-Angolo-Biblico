@@ -30,7 +30,7 @@ export default function Dashboard() {
     return (
       <div className="pt-32 min-h-screen flex items-center justify-center px-6">
         <div className="w-full max-w-md bg-white p-12 shadow-2xl border border-black/5">
-          <h1 className="text-3xl font-serif italic mb-8">Accesso Gestione</h1>
+          <h1 className="text-3xl font-serif mb-8">Accesso Gestione</h1>
           <form onSubmit={handleLogin} className="space-y-6">
             <input 
               type="password" 
@@ -60,14 +60,14 @@ export default function Dashboard() {
         <nav className="space-y-4 flex-grow">
           <button 
             onClick={() => setActiveTab('orders')}
-            className={`w-full flex items-center gap-4 py-2 text-sm transition-all ${activeTab === 'orders' ? 'font-serif italic text-xl' : 'opacity-40 hover:opacity-100'}`}
+            className={`w-full flex items-center gap-4 py-2 text-sm transition-all ${activeTab === 'orders' ? 'font-serif text-xl border-b border-black' : 'opacity-40 hover:opacity-100'}`}
           >
             <ListOrdered className="w-4 h-4" />
             Ordini Ricevuti
           </button>
           <button 
             onClick={() => setActiveTab('books')}
-            className={`w-full flex items-center gap-4 py-2 text-sm transition-all ${activeTab === 'books' ? 'font-serif italic text-xl' : 'opacity-40 hover:opacity-100'}`}
+            className={`w-full flex items-center gap-4 py-2 text-sm transition-all ${activeTab === 'books' ? 'font-serif text-xl border-b border-black' : 'opacity-40 hover:opacity-100'}`}
           >
             <BookOpen className="w-4 h-4" />
             Catalogo Libri
@@ -88,7 +88,7 @@ export default function Dashboard() {
         <div className="max-w-5xl mx-auto">
           <header className="flex justify-between items-end mb-16">
             <div>
-              <h2 className="text-4xl font-serif italic">{activeTab === 'books' ? 'Catalogo Libri' : 'Ordini Ricevuti'}</h2>
+              <h2 className="text-4xl font-serif">{activeTab === 'books' ? 'Catalogo Libri' : 'Ordini Ricevuti'}</h2>
               <p className="text-xs uppercase tracking-widest opacity-40 mt-2">Dati sincronizzati con Google Sheets</p>
             </div>
             
@@ -118,7 +118,7 @@ export default function Dashboard() {
                       <td className="px-6 py-4">
                         <img src={book.immagine} className="w-10 h-12 object-cover" />
                       </td>
-                      <td className="px-6 py-4 font-serif italic text-base">{book.titolo}</td>
+                      <td className="px-6 py-4 font-serif text-base">{book.titolo}</td>
                       <td className="px-6 py-4 opacity-60">{book.autore}</td>
                       <td className="px-6 py-4">
                         <span className="text-[10px] uppercase tracking-widest bg-[#F8F9FA] px-2 py-1 rounded border border-black/5">
@@ -134,7 +134,7 @@ export default function Dashboard() {
               </table>
             ) : (
               <div className="p-12 text-center">
-                <p className="font-serif italic opacity-40 text-lg">
+                <p className="font-serif opacity-40 text-lg">
                   Gli ordini vengono salvati direttamente sul Foglio Google.<br />
                   Controlla il foglio "Ordini" per gestire le spedizioni.
                 </p>

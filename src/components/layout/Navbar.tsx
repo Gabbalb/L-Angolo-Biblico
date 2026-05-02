@@ -25,8 +25,8 @@ export const Navbar = () => {
           />
         </Link>
         
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] pl-[0.4em] opacity-40 font-serif italic whitespace-nowrap">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none ml-20 md:ml-32">
+          <span className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] pl-[0.4em] opacity-40 font-serif whitespace-nowrap">
             non è religione
           </span>
         </div>
@@ -59,14 +59,14 @@ export const Navbar = () => {
                   <Link 
                     to={item.path}
                     onClick={toggleMenu}
-                    className="text-4xl md:text-6xl font-serif italic hover:opacity-50 transition-opacity"
+                    className="text-4xl md:text-6xl font-serif hover:opacity-50 transition-opacity"
                   >
                     {item.name}
                   </Link>
                 </motion.div>
               ))}
             </div>
-            <div className="absolute bottom-12 text-[10px] uppercase tracking-[0.5em] opacity-30 italic">
+            <div className="absolute bottom-12 text-[10px] uppercase tracking-[0.5em] opacity-30">
               ...non è religione...
             </div>
           </motion.div>

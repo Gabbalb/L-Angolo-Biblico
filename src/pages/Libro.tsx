@@ -20,7 +20,8 @@ export default function Libro() {
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
-    email: ''
+    email: '',
+    notes: ''
   });
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function Libro() {
         bookId: book.id, 
         title: book.titolo, 
         author: book.autore, 
+        image: book.immagine,
         quantity 
       }];
     });
@@ -115,24 +117,9 @@ export default function Libro() {
           <Reveal>
             <div className="text-center md:text-left">
               <span className="text-xs uppercase tracking-[0.5em] text-[#8B4513] opacity-40 block mb-4">Letteratura ed Anima</span>
-              <h1 className="text-5xl md:text-8xl italic leading-tight font-serif text-[#4A2C2A]">Un Libro per te</h1>
+              <h1 className="text-5xl md:text-8xl leading-tight font-serif text-[#4A2C2A]">Un Libro per te</h1>
             </div>
           </Reveal>
-
-          {cart.length > 0 && !showCheckout && (
-            <motion.button
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              onClick={() => setShowCheckout(true)}
-              className="group flex items-center gap-4 bg-[#4A2C2A] text-white px-8 py-4 rounded-full transition-all hover:bg-[#5D3A37]"
-            >
-              <div className="flex flex-col items-start leading-none text-left">
-                <span className="text-[10px] uppercase tracking-widest opacity-60 mb-1">Il tuo pacco</span>
-                <span className="font-serif italic text-lg">{totalItems} {totalItems === 1 ? 'libro' : 'libri'}</span>
-              </div>
-              <ShoppingCart className="w-5 h-5 ml-2" />
-            </motion.button>
-          )}
         </div>
 
         <div className="grid gap-32">
@@ -155,28 +142,41 @@ export default function Libro() {
                       layoutId={`book-${book.id}`}
                       key={book.id}
                       onClick={() => {
-                        setSelectedBook(book);
-                        setQtyToOrder(1);
+                        if (!book.esaurito) {
+                          setSelectedBook(book);
+                          setQtyToOrder(1);
+                        }
                       }}
-                      className="cursor-pointer group flex flex-col items-center text-center"
+                      className={`group flex flex-col items-center text-center ${book.esaurito ? 'cursor-not-allowed' : 'cursor-pointer'}`}
                     >
-                      <div className="aspect-[3/4] w-full bg-white shadow-2xl rounded-xl overflow-hidden mb-6 relative transition-transform duration-500 group-hover:-translate-y-2">
+                      <div className={`aspect-[3/4] w-full bg-white shadow-2xl rounded-xl overflow-hidden mb-6 relative transition-all duration-500 ${book.esaurito ? 'grayscale opacity-60' : 'group-hover:-translate-y-2'}`}>
                         <img 
                           src={book.immagine} 
                           alt={book.titolo}
-                          className="w-full h-full object-cover"
+                          className={`w-full h-full ${book.categoria === 'Lingua Straniera' ? 'object-contain p-4 rounded-full' : 'object-cover'}`}
                         />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <span className="text-white text-xs uppercase tracking-widest border border-white/40 px-4 py-2 backdrop-blur-sm rounded">Scegli</span>
-                        </div>
+                        
+                        {book.esaurito && (
+                          <div className="absolute top-0 left-0 w-32 h-32 overflow-hidden pointer-events-none">
+                            <div className="absolute top-6 -left-8 w-40 bg-red-600 text-white text-[10px] uppercase font-bold py-1 tracking-widest text-center -rotate-45 shadow-lg">
+                              Esaurito
+                            </div>
+                          </div>
+                        )}
+
+                        {!book.esaurito && (
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span className="text-white text-xs uppercase tracking-widest border border-white/40 px-4 py-2 backdrop-blur-sm rounded">Scegli</span>
+                          </div>
+                        )}
                       </div>
-                      <div className="space-y-1">
+                      <div className={`space-y-1 ${book.esaurito ? 'opacity-40' : ''}`}>
                         {book.pagine && (
-                          <p className="text-xl font-serif italic text-[#4A2C2A] opacity-80 decoration-[#a2674e]/30 underline decoration-2 underline-offset-4">
+                          <p className="text-xl font-serif text-[#4A2C2A] opacity-80 decoration-[#a2674e]/30 underline decoration-2 underline-offset-4">
                             {book.pagine} pag.
                           </p>
                         )}
-                        <h3 className="text-lg font-serif italic text-[#4A2C2A] group-hover:opacity-60 transition-opacity mt-2">{book.titolo}</h3>
+                        <h3 className="text-lg font-serif text-[#4A2C2A] group-hover:opacity-60 transition-opacity mt-2">{book.titolo}</h3>
                       </div>
                     </motion.div>
                   ))}
@@ -218,7 +218,7 @@ export default function Libro() {
 
               <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
                 <span className="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-4 block">{selectedBook.categoria}</span>
-                <h2 className="text-4xl font-serif italic mb-2">{selectedBook.titolo}</h2>
+                <h2 className="text-4xl font-serif mb-2">{selectedBook.titolo}</h2>
                 <div className="flex items-center gap-4 mb-8">
                   <p className="text-sm uppercase tracking-widest opacity-40">{selectedBook.autore}</p>
                   {selectedBook.pagine && (
@@ -231,7 +231,7 @@ export default function Libro() {
                 
                 <div className="mb-12">
                   <h4 className="text-xs uppercase tracking-widest font-semibold mb-4 opacity-80">La Trama</h4>
-                  <p className="text-lg opacity-70 leading-relaxed font-serif italic">
+                  <p className="text-lg opacity-70 leading-relaxed font-serif">
                     {selectedBook.trama}
                   </p>
                 </div>
@@ -287,7 +287,7 @@ export default function Libro() {
               className="bg-white w-full max-w-md h-full relative z-10 flex flex-col shadow-2xl"
             >
               <div className="p-8 border-b border-black/5 flex justify-between items-center">
-                <h2 className="text-2xl font-serif italic">La tua richiesta</h2>
+                <h2 className="text-2xl font-serif">La tua richiesta</h2>
                 <button onClick={() => setShowCheckout(false)} className="hover:opacity-50 transition-opacity">
                   <X className="w-6 h-6" />
                 </button>
@@ -299,8 +299,8 @@ export default function Libro() {
                     <div className="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center mb-6">
                       <Check className="w-8 h-8" />
                     </div>
-                    <h3 className="text-2xl font-serif italic mb-4">Richiesta Inviata!</h3>
-                    <p className="opacity-60 font-serif italic">
+                    <h3 className="text-2xl font-serif mb-4">Richiesta Inviata!</h3>
+                    <p className="opacity-60 font-serif">
                       Ti abbiamo inviato una mail di conferma.<br />
                       Presto i libri saranno da te.
                     </p>
@@ -309,17 +309,21 @@ export default function Libro() {
                   <>
                     <div className="space-y-8 mb-12">
                       {cart.map((item) => (
-                        <div key={item.bookId} className="flex justify-between items-start">
-                          <div>
-                            <h4 className="font-serif italic text-lg">{item.title}</h4>
-                            <p className="text-[10px] uppercase tracking-widest opacity-40">{item.author}</p>
-                            <p className="text-xs mt-2 font-serif">Quantità: {item.quantity}</p>
+                        <div key={item.bookId} className="flex gap-4 items-center group">
+                          <div className="w-16 h-20 bg-black/5 flex-shrink-0">
+                            <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-serif text-lg leading-tight truncate">{item.title}</h4>
+                            <p className="text-[10px] uppercase tracking-widest opacity-40 truncate">{item.author}</p>
+                            <p className="text-xs mt-1 font-serif">Q.tà: {item.quantity}</p>
                           </div>
                           <button 
                             onClick={() => removeFromCart(item.bookId)}
-                            className="text-[10px] uppercase tracking-widest opacity-40 hover:opacity-100 hover:text-red-600 transition-all"
+                            className="p-2 text-red-400 hover:text-red-600 transition-colors"
+                            title="Rimuovi"
                           >
-                            Rimuovi
+                            <X className="w-5 h-5" />
                           </button>
                         </div>
                       ))}
@@ -352,6 +356,12 @@ export default function Libro() {
                           onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
                           className="w-full border-b border-black/10 py-3 text-lg font-serif italic outline-none focus:border-black transition-colors"
                         />
+                        <textarea
+                          placeholder="Eventuali note o richieste (lingue straniere, ecc.)"
+                          value={formData.notes}
+                          onChange={e => setFormData(prev => ({ ...prev, notes: e.target.value }))}
+                          className="w-full border-b border-black/10 py-3 text-lg font-serif italic outline-none focus:border-black transition-colors resize-none h-24"
+                        />
                       </div>
 
                       <button
@@ -367,6 +377,33 @@ export default function Libro() {
               </div>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Bottom Cart Bar */}
+      <AnimatePresence>
+        {cart.length > 0 && !showCheckout && (
+          <motion.div
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            exit={{ y: 100 }}
+            className="fixed bottom-8 left-0 right-0 z-[80] px-6 pointer-events-none"
+          >
+            <div className="max-w-6xl mx-auto flex justify-center md:justify-end">
+              <button
+                onClick={() => setShowCheckout(true)}
+                className="pointer-events-auto group flex items-center gap-6 bg-[#4A2C2A] text-white px-10 py-5 rounded-full shadow-[0_20px_50px_rgba(74,44,42,0.3)] transition-all hover:scale-105 active:scale-95"
+              >
+                <div className="flex flex-col items-start leading-none text-left">
+                  <span className="text-[10px] uppercase tracking-widest opacity-60 mb-1">Il tuo pacco</span>
+                  <span className="font-serif text-xl">{totalItems} {totalItems === 1 ? 'libro' : 'libri'}</span>
+                </div>
+                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                  <ShoppingCart className="w-6 h-6" />
+                </div>
+              </button>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
